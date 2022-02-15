@@ -1,0 +1,38 @@
+extends ../layout.pug
+
+block content 
+    //- formulario con todos los campos para la creacion del cliente
+    //- Excepto fecha_incripcion, profesor_id
+    //- url:/clientes/create
+    form(action="/clientes/create", method="POST")
+        div.mt-3
+            label.form-label Nombre
+            input.form-control(type="text", name="nombre")
+        div.mt-3
+            label.form-label Apellidos
+            input.form-control(type="text", name="apellidos")
+        div.mt-3
+            label.form-label Dirección
+            input.form-control(type="text", name="direccion")
+        div.mt-3
+            label.form-label Email
+            input.form-control(type="email", name="email")
+        div.mt-3
+            label.form-label Edad
+            input.form-control(type="number", name="edad")
+        div.mt-3
+            label.form-label Género
+            select.form-control(name="genero")
+                option(value="m") Masculino
+                option(value="f") Feminino
+        div.mt-3
+            label.form-label Cuota
+            input.form-control(type="number", name="cuota")
+        div.mt-3
+            label.form-label Fecha de Nacimiento 
+            input.form-control(type="date", name="fecha_nacimiento")
+        div.mt-3
+            label.form-label DNI
+            input.form-control(type="text", name="dni")
+        button.btn.btn-success.mt-3(type="submit", value="Enviar") Enviar 
+

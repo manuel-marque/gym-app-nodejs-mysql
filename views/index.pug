@@ -1,0 +1,87 @@
+extends layout.pug
+
+block content
+  h1 Cabecera de la página
+  h2 Subtitulo 
+  div 
+    ul
+      li Uno
+      li Dos
+      li Tres 
+
+  div
+    //Comentario aparece en el HTML
+    //- Comentario que no aparece en el HTML
+    a(href="http://google.com", target="_blank") Google.com
+    a(href="http://yahoo.es", class="enlace rojo", id="enlaceYahoo") Yahoo.es
+    a#enlaceEbay.enlace.verde(href="http://ebay.es") Ebay
+
+  div 
+    p= nombre
+    p Hola #{nombre}
+
+  //- el guion indica que es codigo javascript  
+  .codigo 
+
+    ul 
+      - for(let i = 0; i < animales.length; i++)
+        li= animales[i]
+
+  .ejemplo-case
+    case productos
+      when 0
+        p No tienes productos 
+      when 1
+        p Tienes un producto
+      default 
+        p Tienes #{productos} productos
+
+  .condicionales 
+    if activo
+      p El usuario está activo
+    else 
+      p El usuario NO está activo
+
+  .iteradores 
+    ol 
+      each animal in animales
+        li= animal
+      else 
+        li No hay animales
+
+  .iteradores_v2
+    ol 
+      each animal in animales
+        li= animal ? animal : 'ERROR'
+      else 
+        li No hay animales
+
+  .iteradores_v3
+    ol 
+      each animal in animales
+        if animal
+          li= animal
+        else
+          li 'ERROR'
+      else 
+        li No hay animales
+
+
+  .iteradores_v4 
+    table.table
+      thead 
+          tr
+            th Nombre 
+            th Apellidos
+            th Direccion 
+            th Edad
+      tbody 
+        each persona in personas
+          tr 
+            td= persona.nombre
+            td= persona.apellidos 
+            td= persona.direccion 
+            td= persona.edad
+        else 
+          tr 
+            td(colspan="4") No hay personas

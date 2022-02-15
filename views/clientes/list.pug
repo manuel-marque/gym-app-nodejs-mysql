@@ -1,0 +1,46 @@
+extends ../layout.pug
+
+block content
+    h2 Lista de clientes (Página : #{page})
+    .buttons 
+        a.btn.btn-info(href="/clientes?page="+(page-1)) Anterior
+        a.btn.btn-info.ms-2(href="/clientes?page="+(page+1)) Siguiente
+    //- Mostrar todos los clientes en una tabla
+    table.table
+        thead 
+            tr 
+                th Nombre
+                th Apellidos
+                th Dirección
+                th Email
+                th Edad  
+                th Género
+                th Cuota 
+                th Fecha de Nacimiento 
+                th DNI
+                th Acciones
+        tbody
+            each cliente in clientes 
+                tr 
+                    td= cliente.nombre 
+                    td= cliente.apellidos
+                    td= cliente.direccion 
+                    td= cliente.email 
+                    td= cliente.edad
+                    td= cliente.genero 
+                    td= cliente.cuota 
+                    td= cliente.fecha_nacimiento 
+                    td= cliente.dni
+                    td 
+                        a.btn.btn-info.btn-sm(href="/clientes/"+cliente.id)  Ver 
+                    td 
+                        a.btn.btn-success.btn-sm(href="/clientes/edit/"+cliente.id)  Editar 
+                    td 
+                        a.btn.btn-sm(href="/clientes/delete/"+cliente.id, onclick="return confirm('Vas a borrar el cliente. ¿Procedemos?');")  ❌ 
+
+    script.
+        console.log('Javascript en el cliente');
+        //- alert('alerta');
+        //- const name = prompt('Dimer tu nombre');
+        //- const valor = confirm('¿Estas seguro?');
+        //- console.log(valor);
